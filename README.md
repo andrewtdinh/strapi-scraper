@@ -1,3 +1,3 @@
-# Strapi application
+# Webscraping Using Strapi
 
-A quick description of your strapi application
+My attempt to webscrape using Strapi
