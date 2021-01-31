@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/scrapers/:id",
+      "path": "/scrapers/:slug",
       "handler": "scraper.findOne",
       "config": {
         "policies": []
