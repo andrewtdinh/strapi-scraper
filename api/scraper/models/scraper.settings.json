@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "scrapers",
   "info": {
-    "name": "scraper"
+    "name": "scraper",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -11,13 +12,14 @@
   },
   "attributes": {
     "slug": {
-      "type": "uid"
+      "type": "uid",
+      "targetField": "name"
     },
     "name": {
       "type": "string"
     },
     "description": {
-      "type": "text"
+      "type": "string"
     },
     "enabled": {
       "type": "boolean"
@@ -33,6 +35,10 @@
     },
     "next_execution_at": {
       "type": "string"
+    },
+    "site_generators": {
+      "via": "scraper",
+      "collection": "site-generator"
     }
   }
 }
