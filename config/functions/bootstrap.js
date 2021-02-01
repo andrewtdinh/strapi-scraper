@@ -9,5 +9,8 @@
  *
  * See more details here: https://strapi.io/documentation/developer-docs/latest/concepts/configurations.html#bootstrap
  */
+const jamstack = require('../../scripts/scrapers/jamstack.js')
 
-module.exports = () => {};
+module.exports = () => {
+  jamstack.main()
+};
