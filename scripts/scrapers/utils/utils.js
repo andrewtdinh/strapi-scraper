@@ -48,4 +48,8 @@ const getDate = async () => {
   return date+' '+time;
 }
 
-module.exports = { getDate, getAllSG, scraperCanRun }
+const getReport = async (newSG) => {
+  return { newSG: newSG, date: await getDate()}
+}
+
+module.exports = { getReport, getDate, getAllSG, scraperCanRun }
