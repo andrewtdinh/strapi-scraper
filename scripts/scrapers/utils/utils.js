@@ -30,4 +30,15 @@ const scraperCanRun = async (scraper) => {
   return false
 }
 
-module.exports = { scraperCanRun }
+const getAllSG = async (scraper) => {
+  const existingSG = await strapi.query('site-generator').find({
+    _limit: 1000,
+    scraper: scraper.id
+  }, ["name"]);
+  const allSG = existingSG.map(x => x.name);
+  console.log(`Site generators in database: \t${chalk.blue(allSG.length)}`);
+
+  return allSG;
+}
+
+module.exports = { getAllSG, scraperCanRun }
