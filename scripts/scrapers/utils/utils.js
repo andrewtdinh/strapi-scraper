@@ -1,6 +1,7 @@
 'use strict'
 
 const parser = require('cron-parser');
+const chalk = require('chalk');
 
 const scraperCanRun = async (scraper) => {
   const frequency = parser.parseExpression(scraper.frequency);
