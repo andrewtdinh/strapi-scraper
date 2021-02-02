@@ -44,7 +44,7 @@ const scrape = async (allSG, scraper) => {
       let card = await page.evaluate(el => el.innerHTML, element);
       let $ = cheerio.load(card)
       const name = $('.text-xl').text().trim() || null;
-	  // Skip this iteration if the sg is already in db
+			// Skip this iteration if the sg is already in db
       if (allSG.includes(name))
         return;
       const stars = $('span:contains("stars")').parent().text().replace("stars", "").trim() || null;
@@ -86,17 +86,18 @@ const main = async () => {
   });
 
   // If the scraper doesn't exists, is disabled or doesn't have a frequency then we do nothing
-  // if (scraper == null || !scraper.enabled || !scraper.frequency){
-  //   console.log(`${chalk.red("Exit")}: (Your scraper may does not exist, is not activated or does not have a frequency field filled in)`);
-  //   return
-  // }
+  if (scraper == null || !scraper.enabled || !scraper.frequency){
+    console.log(`${chalk.red("Exit")}: (Your scraper may does not exist, is not activated or does not have a frequency field filled in)`);
+    return
+  }
 
-  // const canRun = await scraperCanRun(scraper);
-  // if (canRun && scraper.enabled){
-  const allSG = await getAllSG(scraper)
-  await scrape(allSG, scraper)
-  report = await getReport(newSG);
-  // }
+  const canRun = await scraperCanRun(scraper);
+  if (canRun && scraper.enabled){
+    const allSG = await getAllSG(scraper)
+    await scrape(allSG, scraper)
+    report = await getReport(newSG);
+    await updateScraper(scraper, report, errors)
+  }
 }
 
 exports.main = main;
