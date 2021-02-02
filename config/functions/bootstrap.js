@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 /**
  * An asynchronous bootstrap function that runs before
@@ -9,8 +9,5 @@
  *
  * See more details here: https://strapi.io/documentation/developer-docs/latest/concepts/configurations.html#bootstrap
  */
-const jamstack = require('../../scripts/scrapers/jamstack.js')
 
-module.exports = () => {
-  jamstack.main()
-};
+module.exports = () => {};
